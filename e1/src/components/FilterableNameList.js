@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import NameRow from './NameList/NameRow'
 
+import names from '../../mock-data'
+
 export default class FilterableNameList extends Component{
     constructor(){
         super();
@@ -13,7 +15,7 @@ export default class FilterableNameList extends Component{
     }
     componentWillMount(){
         this.setState({
-            names : this.props.names
+            names : names
         })
     }
     handleClick(event){
@@ -39,7 +41,7 @@ export default class FilterableNameList extends Component{
     render(){
         let {names } = this.state;
         let {filterText} = this.state;
-        if(filterText.length >= 3){
+        if(filterText){
             names = names.filter((name) =>{
                 let fullName = `${name.first_name} ${name.last_name}`
                return fullName.toLowerCase().includes(filterText.toLowerCase())
@@ -52,7 +54,7 @@ export default class FilterableNameList extends Component{
                     onChange={this.nameFilter} 
                     type="text" />
                 {names.map((name) => 
-                    <NameRow name={name} />
+                    <NameRow key={name.id} name={name} />
                 )}
             </div>
         )

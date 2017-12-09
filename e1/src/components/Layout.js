@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import Timer from './Timer'
-import FilterableNameList from './FilterableNameList'
+import { Link } from 'react-router-dom'
+
 class Layout extends Component{
     constructor(props){
         super(props);
@@ -9,10 +9,17 @@ class Layout extends Component{
     render(){
         return(
             <div>
-                <h1>Welcome to my site!</h1>
-                <h3>Happy to have you here :)</h3>
-                <Timer/>
-                <FilterableNameList names={this.props.names} />
+                <header>
+                    <h1>Welcome to my site!</h1>
+                    <h3>I'm the header!</h3>
+                    <Link to="/timer">Timer</Link>
+                </header>
+                
+                {this.props.children}
+                
+                <footer>
+                    <h3>I'm the footer!</h3>
+                </footer>
             </div>
         )
     }
