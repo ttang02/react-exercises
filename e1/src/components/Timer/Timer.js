@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
-import TimerHeader from './Timer/TimerHeader'
-import TimerButton from './Timer/TimerButton'
+import TimerHeader from './TimerHeader'
+import TimerButton from './TimerButton'
 
 export default class Timer extends Component{
     constructor(props){
@@ -12,8 +12,10 @@ export default class Timer extends Component{
         }
         this.handleClick = this.handleClick.bind(this);
     }
+
     componentDidMount(){
         this.timer = setInterval(() => this.startTimer(), 1000);
+        //Redirection            this.props.history.push('/');
         
     }
     componentWillUnmount(){
@@ -24,9 +26,6 @@ export default class Timer extends Component{
         this.setState(prevState => ({
             time : prevState.time +=1
         }))
-        this.setState({
-            isStarted : true
-        })
     }
     endTimer(){
         clearInterval(this.timer);

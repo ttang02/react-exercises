@@ -9,7 +9,9 @@ export default class NameRow extends Component{
         let {first_name, last_name} = this.props.name;
         let {id} = this.props.name;
         return(
-            <h3><Link to={`/names/${id}`}>{first_name} {last_name}</Link></h3>
+            <div className="pure-u-1 pure-u-md-1-3">
+                <h3><Link to={`/names/${id}`}>{first_name} {last_name}</Link></h3>
+            </div>
         )
     }
 }
